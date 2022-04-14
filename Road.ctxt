@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Road
+comment0.text=\r\n\ A\ simple\ road\ using\ CityObject\ as\ a\ base\r\n\ \r\n\ @author\ Alex\ Dollar\r\n\ @version\ 1.0-ALPHA\r\n
+comment1.params=x\ y
+comment1.target=Road(int,\ int)
+numComments=2

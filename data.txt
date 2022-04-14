@@ -1,0 +1,10 @@
+# I am a comment
+# No, I am the best comment
+road 0 0
+road 1 0
+res 2 0
+com 2 1
+ind 2 2
+time_step 5 5 2 1 0 3 10
+time_step 5 5 10 5 3 10 10
+#I am a better comment
