@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * The Grid world. Many things happen here
  * 
- * @author (Name Here)
+ * @author Liam
  * @version (Data)
  */
 public class GridWorld extends World
