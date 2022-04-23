@@ -23,8 +23,8 @@ public class GridWorld extends World
 	public int area_height = 0;
         public int cellSize = 50;
 
-	private Camera camera;
-	private worldBorder worldBorder;
+	private Camera camera = new Camera();
+	private WorldBorder worldBorder = new WorldBorder();
 	private Hud hud;
 
 	private boolean loaded = false;
@@ -52,9 +52,12 @@ public class GridWorld extends World
      */
     public GridWorld()
     {    
-        
-        // I would recommend not changing this ~Alex Dollar
+        super(WORLD_X, WORLD_Y, WORLD_CELL_SIZE);
         this.cityMap = new HashMap<>();
+        this.addObject(camera, 0, 0);
+        this.addObject(worldBorder, 0,0);
+        hud = new Hud(this);
+        this.addObject(hud,0,0);
     }
     
     /**
