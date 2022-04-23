@@ -91,12 +91,12 @@ public class GridWorld extends World
         if ( currentTimeStepStartTime + current.time <= secondsPassed )
         {
             // If the time step is not the last time step then 
-            if( current != timesteps.get(timesteps.size()-1) )
+            if( current != timeSteps.get(timeSteps.size()-1) )
             { // waar halen we de last timestep ? uit de lijst van timesteps? 
                 //Set the value of current to the TimeStep at the index currentTimeStepIndex+1 and then 
-                curent = timesteps.get(currentTimeStepIndex + 1);
+                current = timeSteps.get(currentTimeStepIndex + 1);
                 //call the applyTimeStepMethod with the arguments current, and currentTimeStepIndex + 1
-                applyTimeStepMethod(current,currentTimeStepIndex + 1);
+                applyTimeStep(current,currentTimeStepIndex + 1);
             }
             else //Otherwise set the instance var ended to true and call the score method
             {
@@ -122,7 +122,7 @@ public class GridWorld extends World
                 String line = s.nextLine();
                 if( line.startsWith("#")) continue;
                 //split the line into an array
-                String[] words = s.split(" ");
+                String[] words = line.split(" ");
 
                 //If the line starts with “road” 
                 //the next two integers are the position you should call the addTile method with 
@@ -278,11 +278,11 @@ public class GridWorld extends World
             // code block
             break;
             case "ROAD":
-            return(x,y);
+           
             break;
         }
     }
-    }
+    
     /**
      * Handles adding a tile to the world ad storing it in the HashMap
      * 
