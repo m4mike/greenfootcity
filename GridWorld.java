@@ -102,10 +102,48 @@ public class GridWorld extends World
             lastTime = System.currentTimeMillis();
             frames = 0;
             secondsPassed++;
-
         }
 
-    }
+
+        TimeStep current = timeSteps.get( currentTimeStepIndex ) ;  
+        //If the value of currentTimeStepStartTime plus the value of the property time of the current var is less than or equal to seconds passed then:
+        if ( currentTimeStepStartTime + current.time <= secondsPassed )
+            // If the time step is not the last time step then 
+            if( current != timesteps.get(timesteps.size()-1) ) // waar halen we de last timestep ? uit de lijst van timesteps? 
+                //Set the value of current to the TimeStep at the index currentTimeStepIndex+1 and then 
+                curent = timesteps.get(currentTimeStepIndex + 1)
+                //call the applyTimeStepMethod with the arguments current, and currentTimeStepIndex + 1
+                applyTimeStepMethod(current,currentTimeStepIndex + 1)
+
+        //The next part handles loading. If the game is not loaded, has not ended, and the L key is pressed:
+        if(! loaded && !ended ){  // todo : HOE TEST JE DAT L IS  PRESSED ?
+            FileDialog fd = new FileDialog(fd, "Pick a data file", FileDialog.LOAD);
+            fd.setVisible(true);
+            String fname = fd.getDirectory() + fd.getFile();
+                    
+            //create scanner
+            Scanner s; 
+                    
+            //If the line starts with # it is a comment
+            if(String == "#") return null;
+            //line starts with “road”
+            if(String == "road");
+            //call the addTile method with “ROAD”
+            {
+                ROAD.addTile();
+            }    
+            if(String == "res");
+            {
+                RES.addTitle();
+                }
+                if(String == "com");
+                {
+                    COM.addTitle();
+                }
+            }
+        }
+
+        
     
     
     /**
@@ -160,12 +198,15 @@ public class GridWorld extends World
      * Method to get the current time step
      */
     public TimeStep getCurrentTimeStep() {
+        /* The public method getCurrentTimestep() should return the current time step if the game is loaded
+        If the value of the instance var loaded is false, return null
+        Otherwise return the TimeStep at the index currentTimeStepIndex in the timeSteps list
+        code hieronder is juist , maar dan zonder jouw lijn .. dat moest in act() staan
+        */
+
         if(loaded) 
             return timeSteps.get(currentTimeStepIndex);
-        //at index of currentTimeStepIndex
-        TimeStep = currentTimeStepIndex;
-        //in the list of timeSteps
-        //
+ 
         return null;
     }
     
@@ -179,31 +220,7 @@ public class GridWorld extends World
         
         return new TimeStep( this.area_width, this.area_height, this.resTiles, 
                                     this.comTiles, this.indTiles, this.roadTiles, 0); // with time = 0
-        FileDialog fd= null;
-	fd= new FileDialog(fd, "Pick a data file", FileDialog.LOAD);
-	fd.setVisible(true);
-	String fname = fd.getDirectory() + fd.getFile();
-			
-	//create scanner
-	Scanner s; 
-			
-	//If the line starts with # it is a comment
-	if(String == "#") return null;
-	//line starts with “road”
-	if(String == "road");
-	//call the addTile method with “ROAD”
-	{
-	    ROAD.addTile();
-	   }    
-	if(String == "res");
-	{
-	    RES.addTitle();
-         }
-        if(String == "com");
-        {
-            COM.addTitle();
-        }
-        if(
+        
 
     }                            
     
