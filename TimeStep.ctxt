@@ -7,4 +7,6 @@ comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ TimeStep\ defaulting\ 
 comment2.params=areaWidthIncrese\ areaHeightIncrese\ resTiles\ comTiles\ indTiles\ roadTiles\ time\ last
 comment2.target=TimeStep(int,\ int,\ int,\ int,\ int,\ int,\ int,\ boolean)
 comment2.text=\r\n\ Constructor\ for\ objects\ of\ class\ TimeStep\r\n
-numComments=3
+comment3.params=areaWidthIncrese\ areaHeightIncrese\ resTiles\ comTiles\ indTiles\ roadTiles\ time
+comment3.target=void\ initVars(int,\ int,\ int,\ int,\ int,\ int,\ int)
+numComments=4

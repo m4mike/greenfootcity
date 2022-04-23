@@ -33,6 +33,7 @@ public class GridWorld extends World
     public int comTiles = 0;
     public int indTiles = 0;
     public int roadTiles = 0;
+    public int TimeStep = 0;
 
     private long lastTime = System.currentTimeMillis();
     private long frames = 0;
@@ -100,7 +101,7 @@ public class GridWorld extends World
         {
             lastTime = System.currentTimeMillis();
             frames = 0;
-            secondsPadded++;
+            secondsPassed++;
 
         }
 
@@ -128,7 +129,7 @@ public class GridWorld extends World
     private void applyTimeStep(TimeStep step, int index) {
         currentTimeStepStartTime = secondsPassed;
         currentTimeStepIndex  = index;
-        area_width += step.areaWidthIncrese;
+        area_width += step.areaWidthIncrese;
         area_height += step.areaHeightIncrese;
         resTiles += step.resTiles;
         comTiles += step.comTiles;
@@ -161,7 +162,10 @@ public class GridWorld extends World
     public TimeStep getCurrentTimeStep() {
         if(loaded) 
             return timeSteps.get(currentTimeStepIndex);
-        
+        //at index of currentTimeStepIndex
+        TimeStep = currentTimeStepIndex;
+        //in the list of timeSteps
+        //
         return null;
     }
     
@@ -175,6 +179,40 @@ public class GridWorld extends World
         
         return new TimeStep( this.area_width, this.area_height, this.resTiles, 
                                     this.comTiles, this.indTiles, this.roadTiles, 0); // with time = 0
+        FileDialog fd= null;
+	fd= new FileDialog(fd, "Pick a data file", FileDialog.LOAD);
+	fd.setVisible(true);
+	String fname = fd.getDirectory() + fd.getFile();
+			
+	//create scanner
+	Scanner s; 
+			
+	//If the line starts with # it is a comment
+	if(String == "#") return null;
+	//line starts with “road”
+	if(String == "road");
+	//call the addTile method with “ROAD”
+	{
+	    ROAD.addTile();
+	    
+	   }    
+	if(String == "res");
+	{
+	    RES.addTitle();
+         }
+        if(String == "com");
+        {
+            COM.addTitle();
+        }
+        if(
+}
+ }
+	
+	
+	
+	
+	
+    }                            
     }
     
     /**
