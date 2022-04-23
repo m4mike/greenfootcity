@@ -20,7 +20,7 @@ public class GridWorld extends World
 
 	public int area_width = 0;
 	public int area_height = 0;
-        public int cellSize = 50;
+    public int cellSize = 50;
 
 	private Camera camera;;
 	private WorldBorder worldBorder;
@@ -67,6 +67,7 @@ public class GridWorld extends World
         return camera;
     }
     
+
     
     /**
      * Used for file reading, time keeping, and game updating
@@ -117,7 +118,7 @@ public class GridWorld extends World
     private void applyTimeStep(TimeStep step, int index) {
         currentTimeStepStartTime = secondsPassed;
         currentTimeStepIndex  = index;
-        area_width += step.areaWidthIncrese;
+        area_width += step.areaWidthIncrese;
         area_height += step.areaHeightIncrese;
         resTiles += step.resTiles;
         comTiles += step.comTiles;
@@ -197,7 +198,7 @@ public class GridWorld extends World
             // code block
             break;
         }
-    
+    }
     /**
      * Handles adding a tile to the world ad storing it in the HashMap
      * 

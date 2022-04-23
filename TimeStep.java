@@ -8,6 +8,7 @@
  */
 public class TimeStep  
 {
+    
     public int areaWidthIncrese;
     public int areaHeightIncrese;
     public int resTiles;
