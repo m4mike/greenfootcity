@@ -167,6 +167,20 @@ public class GridWorld extends World
             }  
             s.close();
             fd.dispose();
+            //If the size of the timeSteps list is less that 1 
+            //print an error to the console saying the file contained 0 time steps
+            if(timeSteps.size() < 1)  
+                System.out.println("The date file contained 0 time steps "); 
+            else{
+                //Otherwise set the last property of the TimeStep at the index timeSteps.size()-1 
+                //of the list timeSteps to true. Set the value of the instance var loaded to true, 
+                //and call the applyTimeStep method with the first element of the timeSteps list and 0
+                timeSteps.get(timeSteps.size() - 1).last = true;
+                loaded = true;
+                applyTimeStep(timeSteps.get(0),0);
+                
+            }
+
            
       
             
