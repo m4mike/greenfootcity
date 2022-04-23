@@ -74,25 +74,7 @@ public class GridWorld extends World
     /**
      * Used for file reading, time keeping, and game updating
      * 
-     * If you are having trouble with skipping comments when loading the file try this code:
-     * 
-     *          // This will be used later
-                boolean flag = false;
-                // While this line is a comment and there is a next line go to it
-                while (word.charAt(0) == '#') {
-                    try { // reader.hasNextLine() was returning true even on the last line. 
-                        reader.nextLine();
-                        word = reader.next();
-                    } catch (NoSuchElementException e) {
-                        // If there is no next line, set the flag then break out of the loop
-                        flag = true;
-                        break;
-                    }
-                }
-                // Break out of the outer loop if the last line was a comment (flag was set)
-                if (flag) {
-                    break;
-                }
+           
      */
     public void act() {
         if(System.currentTimeMillis() / 1000  == lastTime / 1000 ) 
@@ -107,39 +89,87 @@ public class GridWorld extends World
         TimeStep current = timeSteps.get( currentTimeStepIndex ) ;  
         //If the value of currentTimeStepStartTime plus the value of the property time of the current var is less than or equal to seconds passed then:
         if ( currentTimeStepStartTime + current.time <= secondsPassed )
+        {
             // If the time step is not the last time step then 
-            if( current != timesteps.get(timesteps.size()-1) ) // waar halen we de last timestep ? uit de lijst van timesteps? 
+            if( current != timesteps.get(timesteps.size()-1) )
+            { // waar halen we de last timestep ? uit de lijst van timesteps? 
                 //Set the value of current to the TimeStep at the index currentTimeStepIndex+1 and then 
-                curent = timesteps.get(currentTimeStepIndex + 1)
+                curent = timesteps.get(currentTimeStepIndex + 1);
                 //call the applyTimeStepMethod with the arguments current, and currentTimeStepIndex + 1
-                applyTimeStepMethod(current,currentTimeStepIndex + 1)
+                applyTimeStepMethod(current,currentTimeStepIndex + 1);
+            }
+            else //Otherwise set the instance var ended to true and call the score method
+            {
+                this.ended = true;
+                this.score();   
+            }
+        }
 
+            
+            
         //The next part handles loading. If the game is not loaded, has not ended, and the L key is pressed:
-        if(! loaded && !ended ){  // todo : HOE TEST JE DAT L IS  PRESSED ?
+        if(! loaded && !ended && Greenfoot.isKeyDown("L")){  
+           
             FileDialog fd = new FileDialog(fd, "Pick a data file", FileDialog.LOAD);
             fd.setVisible(true);
             String fname = fd.getDirectory() + fd.getFile();
-                    
-            //create scanner
-            Scanner s; 
-                    
-            //If the line starts with # it is a comment
-            if(String == "#") return null;
-            //line starts with “road”
-            if(String == "road");
-            //call the addTile method with “ROAD”
-            {
-                ROAD.addTile();
-            }    
-            if(String == "res");
-            {
-                RES.addTitle();
+
+            File text = new File(fname);
+            Scanner s = new Scanner(text);
+
+            //Reading each line of the file using Scanner class
+            while(s.hasNextLine()){
+                String line = s.nextLine();
+                if( line.startsWith("#")) continue;
+                //split the line into an array
+                String[] words = s.split(" ");
+
+                //If the line starts with “road” 
+                //the next two integers are the position you should call the addTile method with 
+                //“ROAD” and the two integers you collected
+                if( words[0]=="road"){
+                    addTile("ROAD",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
+                    continue;
                 }
-                if(String == "com");
-                {
-                    COM.addTitle();
+                //If the line starts with “res” the next two integers are the position 
+                //  you should call the addTile method with “RES” and the two integers you collected
+                if( words[0]=="res"){
+                    addTile("RES",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
+                    continue;
                 }
-            }
+                //If the line starts with “com” the next two integers are the position 
+                //  you should call the addTile method with “COM” and the two integers you collected
+                if( words[0]=="com"){
+                    addTile("COM",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
+                    continue;
+                }
+                //If the line starts with “ind” the next two integers are the position 
+                //  you should call the addTile method with “IND” and the two integers you collected
+                if( words[0]=="ind"){
+                    addTile("IND",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
+                    continue;
+                }
+                //If the line starts with “time_step” the next 7 integers will be the arguments 
+                //  to pass to the TimeStep constructor. Create a TimeStep using the 7 collected integers 
+                //  then add the new timestep to the timeSteps list using timeSteps.add()
+                if( words[0]=="time_step"){
+                    TimeStep ts =  new TimeStep(Integer.parseInt(words[1]),
+                    Integer.parseInt(words[2]), Integer.parseInt(words[3]), Integer.parseInt(words[4]),
+                    Integer.parseInt(words[5]), Integer.parseInt(words[6]), Integer.parseInt(words[7]));
+                    //TimeStep(int areaWidthIncrese 1, int areaHeightIncrese 2, int resTiles 3,
+                    // int comTiles 4, int indTiles 5 , int roadTiles 6, int time 7) 
+                    timeSteps.add(ts);
+                    continue;
+                }
+                //If the line starts with something unknown an error should be logged to the console
+                System.out.println("Unknown command line in data file "); 
+             
+            }  
+            s.close();
+            fd.dispose();
+           
+      
+            
         }
 
     }
@@ -216,32 +246,7 @@ public class GridWorld extends World
         
         return new TimeStep( this.area_width, this.area_height, this.resTiles, 
                                     this.comTiles, this.indTiles, this.roadTiles, 0); // with time = 0
-        FileDialog fd= null;
-	fd= new FileDialog(fd, "Pick a data file", FileDialog.LOAD);
-	fd.setVisible(true);
-	String fname = fd.getDirectory() + fd.getFile();
-			
-	//create scanner
-	Scanner s; 
-			
-	//If the line starts with # it is a comment
-	if(String == "#") return null;
-	//line starts with “road”
-	if(String == "road");
-	//call the addTile method with “ROAD”
-	{
-	    ROAD.addTile();
-	   }    
-	if(String == "res");
-	{
-	    RES.addTitle();
-         }
-        if(String == "com");
-        {
-            COM.addTitle();
-        }
-        if(
-
+        
     }                            
     
     
