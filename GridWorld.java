@@ -194,7 +194,6 @@ public class GridWorld extends World
 	//call the addTile method with “ROAD”
 	{
 	    ROAD.addTile();
-	    
 	   }    
 	if(String == "res");
 	{
@@ -205,15 +204,9 @@ public class GridWorld extends World
             COM.addTitle();
         }
         if(
-}
- }
-	
-	
-	
-	
-	
+
     }                            
-    }
+    
     
     /**
      * Place a object into the world
@@ -243,9 +236,10 @@ public class GridWorld extends World
             // code block
             break;
             case "ROAD":
-            // code block
+            return(x,y);
             break;
         }
+    }
     }
     /**
      * Handles adding a tile to the world ad storing it in the HashMap
