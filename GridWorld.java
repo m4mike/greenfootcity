@@ -14,32 +14,33 @@ import java.util.ArrayList;
 public class GridWorld extends World
 {
 
-	public static final int WORLD_X = 600;
-	public static final int WORLD_Y = 600;
-	public static final int WORLD_CELL_SIZE = 1;
+    public static final int WORLD_X = 600;
+    public static final int WORLD_Y = 600;
+    public static final int WORLD_CELL_SIZE = 1;
 
-	public int area_width = 0;
-	public int area_height = 0;
+    public int area_width = 0;
+    public int area_height = 0;
     public int cellSize = 50;
 
-	private Camera camera;;
-	private WorldBorder worldBorder;
-	private Hud hud;
+    private Camera camera;;
+    private WorldBorder worldBorder;
+    private Hud hud;
+    //tesje
 
-	private boolean loaded = false;
-	private boolean ended = false;
-	public int resTiles = 0;
-	public int comTiles = 0;
-	public int indTiles = 0;
-	public int roadTiles = 0;
+    private boolean loaded = false;
+    private boolean ended = false;
+    public int resTiles = 0;
+    public int comTiles = 0;
+    public int indTiles = 0;
+    public int roadTiles = 0;
 
-	private long lastTime = System.currentTimeMillis();
-	private long frames = 0;
-	private long secondsPassed = 0;
+    private long lastTime = System.currentTimeMillis();
+    private long frames = 0;
+    private long secondsPassed = 0;
 
-	private long currentTimeStepStartTime = 0;
-	private int currentTimeStepIndex = -1;
-	private ArrayList<TimeStep> timeSteps = new ArrayList<>();
+    private long currentTimeStepStartTime = 0;
+    private int currentTimeStepIndex = -1;
+    private ArrayList<TimeStep> timeSteps = new ArrayList<>();
 
     // Create an instance var for the map which will hold what tiles are where (I would recommend not changing this ~Alex Dollar)
     private HashMap<String, String> cityMap; 
