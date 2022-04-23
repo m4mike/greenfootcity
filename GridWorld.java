@@ -14,32 +14,34 @@ import java.util.ArrayList;
 public class GridWorld extends World
 {
 
-	public static final int WORLD_X = 600;
-	public static final int WORLD_Y = 600;
-	public static final int WORLD_CELL_SIZE = 1;
+    public static final int WORLD_X = 600;
+    public static final int WORLD_Y = 600;
+    public static final int WORLD_CELL_SIZE = 1;
 
-	public int area_width = 0;
-	public int area_height = 0;
+    public int area_width = 0;
+    public int area_height = 0;
     public int cellSize = 50;
 
-	private Camera camera;;
-	private WorldBorder worldBorder;
-	private Hud hud;
+    private Camera camera;;
+    private WorldBorder worldBorder;
+    private Hud hud;
+    //tesje
 
-	private boolean loaded = false;
-	private boolean ended = false;
-	public int resTiles = 0;
-	public int comTiles = 0;
-	public int indTiles = 0;
-	public int roadTiles = 0;
+    private boolean loaded = false;
+    private boolean ended = false;
+    public int resTiles = 0;
+    public int comTiles = 0;
+    public int indTiles = 0;
+    public int roadTiles = 0;
+    public int TimeStep = 0;
 
-	private long lastTime = System.currentTimeMillis();
-	private long frames = 0;
-	private long secondsPassed = 0;
+    private long lastTime = System.currentTimeMillis();
+    private long frames = 0;
+    private long secondsPassed = 0;
 
-	private long currentTimeStepStartTime = 0;
-	private int currentTimeStepIndex = -1;
-	private ArrayList<TimeStep> timeSteps = new ArrayList<>();
+    private long currentTimeStepStartTime = 0;
+    private int currentTimeStepIndex = -1;
+    private ArrayList<TimeStep> timeSteps = new ArrayList<>();
 
     // Create an instance var for the map which will hold what tiles are where (I would recommend not changing this ~Alex Dollar)
     private HashMap<String, String> cityMap; 
@@ -93,7 +95,16 @@ public class GridWorld extends World
                 }
      */
     public void act() {
-        
+        if(System.currentTimeMillis() / 1000  == lastTime / 1000 ) 
+            frames++;
+        else
+        {
+            lastTime = System.currentTimeMillis();
+            frames = 0;
+            secondsPassed++;
+
+        }
+
     }
     
     
@@ -118,7 +129,7 @@ public class GridWorld extends World
     private void applyTimeStep(TimeStep step, int index) {
         currentTimeStepStartTime = secondsPassed;
         currentTimeStepIndex  = index;
-        area_width += step.areaWidthIncrese;
+        area_width += step.areaWidthIncrese;
         area_height += step.areaHeightIncrese;
         resTiles += step.resTiles;
         comTiles += step.comTiles;
@@ -151,7 +162,10 @@ public class GridWorld extends World
     public TimeStep getCurrentTimeStep() {
         if(loaded) 
             return timeSteps.get(currentTimeStepIndex);
-        
+        //at index of currentTimeStepIndex
+        TimeStep = currentTimeStepIndex;
+        //in the list of timeSteps
+        //
         return null;
     }
     
@@ -165,7 +179,34 @@ public class GridWorld extends World
         
         return new TimeStep( this.area_width, this.area_height, this.resTiles, 
                                     this.comTiles, this.indTiles, this.roadTiles, 0); // with time = 0
-    }
+        FileDialog fd= null;
+	fd= new FileDialog(fd, "Pick a data file", FileDialog.LOAD);
+	fd.setVisible(true);
+	String fname = fd.getDirectory() + fd.getFile();
+			
+	//create scanner
+	Scanner s; 
+			
+	//If the line starts with # it is a comment
+	if(String == "#") return null;
+	//line starts with “road”
+	if(String == "road");
+	//call the addTile method with “ROAD”
+	{
+	    ROAD.addTile();
+	   }    
+	if(String == "res");
+	{
+	    RES.addTitle();
+         }
+        if(String == "com");
+        {
+            COM.addTitle();
+        }
+        if(
+
+    }                            
+    
     
     /**
      * Place a object into the world
@@ -195,9 +236,10 @@ public class GridWorld extends World
             // code block
             break;
             case "ROAD":
-            // code block
+            return(x,y);
             break;
         }
+    }
     }
     /**
      * Handles adding a tile to the world ad storing it in the HashMap
