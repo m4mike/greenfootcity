@@ -7,10 +7,9 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 /**
- * The Grid world. Many things happen here
+ * The Grid world.
  * 
- * @author Liam
- * @version (Data)
+ * @author Liam Bentein
  */
 public class GridWorld extends World
 {
@@ -23,8 +22,8 @@ public class GridWorld extends World
 	public int area_height = 0;
         public int cellSize = 50;
 
-	private Camera camera = new Camera();
-	private WorldBorder worldBorder = new WorldBorder();
+	private Camera camera;;
+	private WorldBorder worldBorder;
 	private Hud hud;
 
 	private boolean loaded = false;
@@ -38,8 +37,8 @@ public class GridWorld extends World
 	private long frames = 0;
 	private long secondsPassed = 0;
 
-	private long urrentTimeStepStartTime = 0;
-	private int currentTImeStepIndex = -1;
+	private long currentTimeStepStartTime = 0;
+	private int currentTimeStepIndex = -1;
 	private ArrayList<TimeStep> timeSteps = new ArrayList<>();
 
     // Create an instance var for the map which will hold what tiles are where (I would recommend not changing this ~Alex Dollar)
@@ -54,10 +53,9 @@ public class GridWorld extends World
     {    
         super(WORLD_X, WORLD_Y, WORLD_CELL_SIZE);
         this.cityMap = new HashMap<>();
-        this.addObject(camera, 0, 0);
-        this.addObject(worldBorder, 0,0);
-        hud = new Hud(this);
-        this.addObject(hud,0,0);
+        camera = new Camera();            this.addObject(camera, 0, 0);
+        worldBorder  = new WorldBorder(); this.addObject(worldBorder, 0,0);
+        hud = new Hud(this);              this.addObject(hud,0,0);
     }
     
     /**
@@ -66,7 +64,7 @@ public class GridWorld extends World
      * @returns The current camera
      */
     public Camera getCamera() {
-        
+        return camera;
     }
     
     
@@ -106,10 +104,10 @@ public class GridWorld extends World
      * @returns The generated key
      */
     private String getKey(int x, int y) {
-        
+        return String.format("%d - %d", x, y);
     }
     
-    
+     
     /**
      * Method to apply time step values to the world
      * 
@@ -117,7 +115,15 @@ public class GridWorld extends World
      * @param index The index of the timestep in the timesteps array
      */
     private void applyTimeStep(TimeStep step, int index) {
-        
+        currentTimeStepStartTime = secondsPassed;
+        currentTimeStepIndex  = index;
+        area_width += step.areaWidthIncrese;
+        area_height += step.areaHeightIncrese;
+        resTiles += step.resTiles;
+        comTiles += step.comTiles;
+        indTiles += step.indTiles;
+        roadTiles += step.roadTiles;
+       
     }
     
     
@@ -126,7 +132,7 @@ public class GridWorld extends World
      * This method calles the score method under the hud
      */
     private void score() {
-        
+        hud.score(cityMap);
     }
     
     /**
@@ -135,14 +141,17 @@ public class GridWorld extends World
      * @returns loaded
      */
     public boolean isLoaded() {
-        
+        return loaded;
     }
     
     /**
      * Method to get the current time step
      */
     public TimeStep getCurrentTimeStep() {
+        if(loaded) 
+            return timeSteps.get(currentTimeStepIndex);
         
+        return null;
     }
     
     /**
@@ -151,7 +160,10 @@ public class GridWorld extends World
      * @returns The timestep containing the current world data
      */
     public TimeStep getCurrentDataAsTimeStep() {
+        if (! loaded ) return null;
         
+        return new TimeStep( this.area_width, this.area_height, this.resTiles, 
+                                    this.comTiles, this.indTiles, this.roadTiles, 0); // with time = 0
     }
     
     /**
@@ -162,8 +174,29 @@ public class GridWorld extends World
      * @param y The y object position
      */
     public void place(String type, int x, int y) {
-        
-    }
+        if ( ! loaded) return;
+        if ( cityMap.get(getKey(x,y)) != null ) return; 
+        if (x < 0 || y < 0) return;
+        if ( x > area_width-1 || y > area_height-1) return;
+        /*
+         * todo
+         * Check if the player has more of the tiles they are trying to place 
+         * if so remove one of the tiles and call the addTile method with type, x, and y
+         */
+        switch(type) {
+            case "RES":
+            // code block
+            break;
+            case "COM":
+            // code block
+            break;
+            case "IND":
+            // code block
+            break;
+            case "ROAD":
+            // code block
+            break;
+        }
     
     /**
      * Handles adding a tile to the world ad storing it in the HashMap
