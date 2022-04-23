@@ -94,7 +94,16 @@ public class GridWorld extends World
                 }
      */
     public void act() {
-        
+        if(System.currentTimeMillis() / 1000  == lastTime / 1000 ) 
+            frames++;
+        else
+        {
+            lastTime = System.currentTimeMillis();
+            frames = 0;
+            secondsPadded++;
+
+        }
+
     }
     
     
