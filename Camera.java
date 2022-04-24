@@ -30,7 +30,7 @@ public class Camera extends Actor
     private GreenfootImage createImage() {
         GreenfootImage img = new GreenfootImage(GridWorld.WORLD_X + getGridWorld().cellSize*2, GridWorld.WORLD_Y + getGridWorld().cellSize*2);
         int cellSize = getGridWorld().cellSize;
-        img.setColor( Color.GREY);
+        img.setColor( Color.GRAY);
         for(int x = 0;  x <= img.getWidth(); x += cellSize)
             img.drawLine(x, 0, x, img.getHeight());
    
