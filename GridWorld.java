@@ -22,7 +22,7 @@ public class GridWorld extends World
     public int area_height = 0;
     public int cellSize = 50;
 
-    private Camera camera;;
+    private Camera camera;
     private WorldBorder worldBorder;
     private Hud hud;
     //tesje
@@ -178,8 +178,9 @@ public class GridWorld extends World
                 timeSteps.get(timeSteps.size() - 1).last = true;
                 loaded = true;
                 applyTimeStep(timeSteps.get(0),0);
-                
+
             }
+            
 
            
       

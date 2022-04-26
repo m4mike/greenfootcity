@@ -5,7 +5,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * The camera that all city objects position themselves releative to
  * This class is also incharge of drawing the grid
  * 
- * @author (Name Here)
+ * @author Liam Bentein
  * @version (Date)
  */
 public class Camera extends Actor
