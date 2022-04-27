@@ -15,7 +15,7 @@ public class Hud extends Actor
      * Use the constructor to display some starting data
      */
     public Hud(GridWorld world) {
-        
+        GreenfootImage textImage = new GreenfootImage("Press run to start", 24, new Color(0, 255, 128), new Color(0, 0, 0, 0));
     }
     
     /**
@@ -75,7 +75,7 @@ public class Hud extends Actor
     }
     
     private GridWorld getGridWorld() {
-        
+        //return getWorld();
     }
     
     /**
