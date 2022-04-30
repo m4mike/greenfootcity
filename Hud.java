@@ -22,7 +22,7 @@ public class Hud extends Actor
     public Hud(GridWorld world) {
         
         //GreenfootImage textImage = new GreenfootImage("Press run to start", 24, new Color(0, 255, 128), new Color(0, 0, 0, 0));
-        world.showText("Press run to start", GridWorld.WORLD_X ,GridWorld.WORLD_Y/4);
+        world.showText("Press run to start", GridWorld.WORLD_X/2 ,GridWorld.WORLD_Y/4);
     }
     /**
      * Drawhe HUD to the screen and handle placment

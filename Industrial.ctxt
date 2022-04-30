@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Industrial
-comment0.text=\r\n\ A\ simple\ industrial\ district\ using\ CityObject\ as\ a\ base\r\n\ \r\n\ @author\ Alex\ Dollar\ \r\n\ @version\ 1.0-ALPHA\r\n
+comment0.text=\r\n\ A\ simple\ industrial\ district\ using\ CityObject\ as\ a\ base\r\n\ \r\n\ @author\ (Name\ Here)\r\n\ @version\ (Date)\r\n
 comment1.params=x\ y
 comment1.target=Industrial(int,\ int)
 numComments=2

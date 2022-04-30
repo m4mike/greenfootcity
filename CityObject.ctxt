@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=CityObject
-comment0.text=\r\n\ This\ is\ a\ abstract\ class\ that\ is\ used\ to\ display\ objects\ at\ a\ grid\ position.\r\n\ This\ class\ does\ not\ need\ to\ be\ abstract.\ I\ made\ it\ abstract\ because\ you\ sbould\ not\ create\ an\ instance\ of\ this\ class.\r\n\ You\ should\ only\ create\ an\ instnce\ of\ any\ child\ class\ this\ class\ may\ have.\r\n\ \r\n\ @author\ Alex\ Dollar\ \r\n\ @version\ 1.0-SNAPSHOT\r\n
+comment0.text=\r\n\ This\ is\ a\ abstract\ class\ that\ is\ used\ to\ display\ objects\ at\ a\ grid\ position.\r\n\ This\ class\ does\ not\ need\ to\ be\ abstract.\ I\ made\ it\ abstract\ because\ you\ sbould\ not\ create\ an\ instance\ of\ this\ class.\r\n\ You\ should\ only\ create\ an\ instnce\ of\ any\ child\ class\ this\ class\ may\ have.\r\n\ \r\n\ @author\ (Name\ Here)\r\n\ @version\ (Date)\r\n
 comment1.params=x\ y
 comment1.target=CityObject(int,\ int)
 comment2.params=

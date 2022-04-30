@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=GridWorld
-comment0.text=\r\n\ The\ Grid\ world.\ Many\ things\ happen\ here\r\n\ \r\n\ @author\ Alex\ Dollar\r\n\ @version\ 1.0-ALPHA\r\n
+comment0.text=\r\n\ The\ Grid\ world.\r\n\ \r\n\ @author\ Liam\ Bentein\r\n
 comment1.params=
 comment1.target=GridWorld()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GridWorld.\r\n\ \r\n
@@ -9,13 +9,13 @@ comment10.target=void\ place(java.lang.String,\ int,\ int)
 comment10.text=\r\n\ Place\ a\ object\ into\ the\ world\r\n\ \r\n\ @param\ type\ The\ type\ of\ the\ object\ to\ place\:\ ["RES",\ "COM",\ "IND",\ "ROAD"]\r\n\ @param\ x\ The\ x\ object\ position\r\n\ @param\ y\ The\ y\ object\ position\r\n
 comment11.params=type\ x\ y
 comment11.target=void\ addTile(java.lang.String,\ int,\ int)
-comment11.text=\r\n\ Handles\ adding\ a\ tile\ to\ the\ world\ ad\ storing\ it\ in\ the\ HashMap\r\n\ \r\n\ @param\ type\ The\ type\ of\ time\ to\ place\r\n\ @param\ x\ The\ x\ tile\ coord\r\n\ @param\ y\ The\ y\ tile\ coord\r\n
+comment11.text=\r\n\ Handles\ adding\ a\ tile\ to\ the\ world\ ad\ storing\ it\ in\ the\ HashMap\r\n\ \r\n\ I\ would\ recommend\ not\ changing\ this\ ~Alex\ Dollar\r\n\ \r\n\ @param\ type\ The\ type\ of\ time\ to\ place\r\n\ @param\ x\ The\ x\ tile\ coord\r\n\ @param\ y\ The\ y\ tile\ coord\r\n
 comment2.params=
 comment2.target=Camera\ getCamera()
 comment2.text=\r\n\ Get\ the\ current\ camera\r\n\ \r\n\ @returns\ The\ current\ camera\r\n
 comment3.params=
 comment3.target=void\ act()
-comment3.text=\r\n\ Used\ for\ file\ reading,\ time\ keeping,\ and\ game\ updating\r\n
+comment3.text=\r\n\ Used\ for\ file\ reading,\ time\ keeping,\ and\ game\ updating\r\n\ \r\n\ \ \ \ \ \ \ \ \ \ \ \r\n
 comment4.params=x\ y
 comment4.target=java.lang.String\ getKey(int,\ int)
 comment4.text=\r\n\ Method\ used\ to\ create\ a\ unique\ string\ key\ for\ any\ two\ integer\ inputs\r\n\ \r\n\ @param\ x\ The\ x\ input\r\n\ @param\ y\ The\ y\ input\r\n\ @returns\ The\ generated\ key\r\n
