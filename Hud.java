@@ -11,15 +11,21 @@ import java.util.HashMap;
  */
 public class Hud extends Actor
 {
+    String[] messages = new String[] { "Welcome to city planner!",
+        "Use the arrow keys to move the camera.","Hover over a grid cell then use the keys 1-4 to place a city object." , "1- Res(idential)",
+        "2- Com(mercial)","3- Ind(ustrial)", "4- Road", "Use the L key to load a data file to start the game." };
+       
+    
     /**
      * Use the constructor to display some starting data
      */
     public Hud(GridWorld world) {
-        GreenfootImage textImage = new GreenfootImage("Press run to start", 24, new Color(0, 255, 128), new Color(0, 0, 0, 0));
+        
+        //GreenfootImage textImage = new GreenfootImage("Press run to start", 24, new Color(0, 255, 128), new Color(0, 0, 0, 0));
+        world.showText("Press run to start", GridWorld.WORLD_X ,GridWorld.WORLD_Y/4);
     }
-    
     /**
-     * Draw the HUD to the screen and handle placment
+     * Drawhe HUD to the screen and handle placment
      */
     public void act()
     {
@@ -30,13 +36,40 @@ public class Hud extends Actor
      * Used to draw instructions to the screen before the user has loaded a level
      */
     private void drawInfo() {
+        /*
+         * The private method drawInfo should draw info to the screen
+The text should start at the same position as the method shown in the constructor with each next message being 32 pixels below the last
+The messages are:
+“Welcome to City Planner!”
+“Use the arrow keys to move the camera.”
+“Hover over a grid cell then use the keys 1-4 to place a city object.”
+1- Res(idential)
+2- Com(mercial)
+3- Ind(ustrial) 
+4- Road
+“Use the L key to load a data file to start the game.”
+
+         */
+        int posY = GridWorld.WORLD_Y / 4;
+        GridWorld gw = (GridWorld) this.getWorld();
+         for( int i = 0 ; i< messages.length;i++)
+        {
+            gw.showText(messages[i], GridWorld.WORLD_X, posY + ((i+1) * 32 ));
+        }
+
         
-    }
+        }
     
     /**
      * Clears the instuctions from the screen once the user has loaded a file
      */
     private void clearInfo() {
+        int posY = GridWorld.WORLD_Y / 4;
+        GridWorld gw = (GridWorld) this.getWorld();
+         for( int i = 0 ; i< messages.length;i++)
+        {
+            gw.showText(null, GridWorld.WORLD_X, posY + ((i+1) * 32 ));
+        }
         
     }
     
@@ -46,6 +79,24 @@ public class Hud extends Actor
      * @param data The timestep containing the data to display
      */
     private void drawData(TimeStep data) {
+        /*
+         * The private method drawData should take a TimeStep as a parameter.
+The Time step’s res tiles should be drawn 1/5 the way acrost the screen and 48 pixels down
+The Time steps com tiles should be drawn 2/5 the way acrost the screen and 48 pixels down
+The Time step’s ind tiles should be drawn 3/5 the way acrost the screen and 48 pixels down
+The Time step’s road tiles should be drawn 4/5 the way acrost the screen and 48 pixels down
+The Time step’s area should be drawn halfway acrost the screen and 64 pixels down
+
+         */
+        
+        GridWorld gw = (GridWorld) this.getWorld();
+        gw.showText(Integer.toString(data.resTiles), GridWorld.WORLD_X * 1 / 5, 48);
+        gw.showText(Integer.toString(data.comTiles), GridWorld.WORLD_X * 2 / 5, 48);
+        gw.showText(Integer.toString(data.indTiles), GridWorld.WORLD_X * 3 / 5, 48);
+        gw.showText(Integer.toString(data.roadTiles), GridWorld.WORLD_X * 4 / 5, 48);
+        //todo
+        gw.showText(Integer.toString(data.areaWidthIncrese), GridWorld.WORLD_X / 2 , 64);
+        
         
     }
     
@@ -57,6 +108,7 @@ public class Hud extends Actor
      * @returns The generated key
      */
     private String getKey(int x, int y) {
+        return String.format("%d - %d", x, y);
         
     }
     
@@ -71,11 +123,17 @@ public class Hud extends Actor
      * @returns The amount found
      */
     private int checkAny(String check, String up, String down, String left, String right) {
-        
+        if(check == null)return 0;
+        int total = 0;
+        if(up != null && check == up) total++;
+        if(down != null && check == up) total++;
+        if(left != null && check == up) total++;
+        if(right!= null && check == up) total++;
+        return total;
     }
     
     private GridWorld getGridWorld() {
-        //return getWorld();
+        return (GridWorld) getWorld();
     }
     
     /**
