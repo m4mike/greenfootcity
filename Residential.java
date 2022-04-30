@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Residential extends CityObject
 {
     public Residential(int x, int y) {
+        super(x , y);
         
     }
     

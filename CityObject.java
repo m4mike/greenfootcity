@@ -10,7 +10,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public abstract class CityObject extends Actor
 {
+    public int objectX;
+    public int objectY;
+    
     public CityObject(int x, int y) {
+        objectX = x;
+        objectY = y;
         
     }
     
@@ -20,10 +25,17 @@ public abstract class CityObject extends Actor
      */
     public void act()
     {
-        
-    }
+    GridWorld gw = getGridWorld();
+    Camera camera = gw.getCamera();
+    setLocation((objectX*gw.cellSize) - camera.cameraX + gw.cellSize/2 , (objectY*gw.cellSize) - camera.cameraY + gw.cellSize/2);
     
+    GreenfootImage img = this.getImage();
+    img.scale(gw.cellSize,gw.cellSize);
+    setImage(img);
+    }
+
     private GridWorld getGridWorld() {
+        return (GridWorld) getWorld();
         
     }
 }

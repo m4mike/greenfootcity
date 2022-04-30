@@ -29,7 +29,28 @@ public class Hud extends Actor
      */
     public void act()
     {
-        
+        GridWorld gw = this.getGridWorld();
+        if( gw.isLoaded() ){
+            clearInfo();
+            drawData(gw.getCurrentDataAsTimeStep());
+            MouseInfo mouse = Greenfoot.getMouseInfo();
+            Camera camera  = gw.getCamera();
+            if(mouse != null)
+            {
+                int x = (mouse.getX() + camera.cameraX)/gw.cellSize;
+                int y = (mouse.getY() + camera.cameraY)/gw.cellSize;
+            
+                if(Greenfoot.isKeyDown("1"))gw.place("RES", x, y);
+                if(Greenfoot.isKeyDown("2"))gw.place("COM", x, y);
+                if(Greenfoot.isKeyDown("3"))gw.place("IND", x, y);
+                if(Greenfoot.isKeyDown("4"))gw.place("ROAD", x, y);
+                
+            }
+        }
+        else
+        {
+            this.drawInfo();
+        }
     }
     
     /**

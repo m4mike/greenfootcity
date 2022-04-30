@@ -100,6 +100,7 @@ public class GridWorld extends World
             }
             else //Otherwise set the instance var ended to true and call the score method
             {
+                
                 this.ended = true;
                 this.score();   
             }
