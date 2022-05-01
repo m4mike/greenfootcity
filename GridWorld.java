@@ -111,70 +111,63 @@ public class GridWorld extends World
         //The next part handles loading. If the game is not loaded, has not ended, and the L key is pressed:
         if(! loaded && !ended && Greenfoot.isKeyDown("L")){  
            
-            FileDialog fd = null;
-            fd = new FileDialog(fd, "Pick a data file", FileDialog.LOAD);
+            FileDialog fd = new FileDialog(fd, "Pick a data file", FileDialog.LOAD);
             fd.setVisible(true);
             String fname = fd.getDirectory() + fd.getFile();
 
             File text = new File(fname);
-            try{
-                Scanner s = new Scanner(text);
-    
-                //Reading each line of the file using Scanner class
-                while(s.hasNextLine()){
-                    String line = s.nextLine();
-                    if( line.startsWith("#")) continue;
-                    //split the line into an array
-                    String[] words = line.split(" ");
-    
-                    //If the line starts with “road” 
-                    //the next two integers are the position you should call the addTile method with 
-                    //“ROAD” and the two integers you collected
-                    if( words[0]=="road"){
-                        addTile("ROAD",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
-                        continue;
-                    }
-                    //If the line starts with “res” the next two integers are the position 
-                    //  you should call the addTile method with “RES” and the two integers you collected
-                    if( words[0]=="res"){
-                        addTile("RES",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
-                        continue;
-                    }
-                    //If the line starts with “com” the next two integers are the position 
-                    //  you should call the addTile method with “COM” and the two integers you collected
-                    if( words[0]=="com"){
-                        addTile("COM",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
-                        continue;
-                    }
-                    //If the line starts with “ind” the next two integers are the position 
-                    //  you should call the addTile method with “IND” and the two integers you collected
-                    if( words[0]=="ind"){
-                        addTile("IND",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
-                        continue;
-                    }
-                    //If the line starts with “time_step” the next 7 integers will be the arguments 
-                    //  to pass to the TimeStep constructor. Create a TimeStep using the 7 collected integers 
-                    //  then add the new timestep to the timeSteps list using timeSteps.add()
-                    if( words[0]=="time_step"){
-                        TimeStep ts =  new TimeStep(Integer.parseInt(words[1]),
-                        Integer.parseInt(words[2]), Integer.parseInt(words[3]), Integer.parseInt(words[4]),
-                        Integer.parseInt(words[5]), Integer.parseInt(words[6]), Integer.parseInt(words[7]));
-                        //TimeStep(int areaWidthIncrese 1, int areaHeightIncrese 2, int resTiles 3,
-                        // int comTiles 4, int indTiles 5 , int roadTiles 6, int time 7) 
-                        timeSteps.add(ts);
-                        continue;
-                    }
-                    //If the line starts with something unknown an error should be logged to the console
-                    System.out.println("Unknown command line in data file "); 
-                    s.close();
-                    fd.dispose();
+            Scanner s = new Scanner(text);
+
+            //Reading each line of the file using Scanner class
+            while(s.hasNextLine()){
+                String line = s.nextLine();
+                if( line.startsWith("#")) continue;
+                //split the line into an array
+                String[] words = line.split(" ");
+
+                //If the line starts with “road” 
+                //the next two integers are the position you should call the addTile method with 
+                //“ROAD” and the two integers you collected
+                if( words[0]=="road"){
+                    addTile("ROAD",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
+                    continue;
                 }
-            }catch( Exception e) 
-                {
-                    System.out.println("Error reading data file ");
+                //If the line starts with “res” the next two integers are the position 
+                //  you should call the addTile method with “RES” and the two integers you collected
+                if( words[0]=="res"){
+                    addTile("RES",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
+                    continue;
                 }
-              
-            
+                //If the line starts with “com” the next two integers are the position 
+                //  you should call the addTile method with “COM” and the two integers you collected
+                if( words[0]=="com"){
+                    addTile("COM",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
+                    continue;
+                }
+                //If the line starts with “ind” the next two integers are the position 
+                //  you should call the addTile method with “IND” and the two integers you collected
+                if( words[0]=="ind"){
+                    addTile("IND",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
+                    continue;
+                }
+                //If the line starts with “time_step” the next 7 integers will be the arguments 
+                //  to pass to the TimeStep constructor. Create a TimeStep using the 7 collected integers 
+                //  then add the new timestep to the timeSteps list using timeSteps.add()
+                if( words[0]=="time_step"){
+                    TimeStep ts =  new TimeStep(Integer.parseInt(words[1]),
+                    Integer.parseInt(words[2]), Integer.parseInt(words[3]), Integer.parseInt(words[4]),
+                    Integer.parseInt(words[5]), Integer.parseInt(words[6]), Integer.parseInt(words[7]));
+                    //TimeStep(int areaWidthIncrese 1, int areaHeightIncrese 2, int resTiles 3,
+                    // int comTiles 4, int indTiles 5 , int roadTiles 6, int time 7) 
+                    timeSteps.add(ts);
+                    continue;
+                }
+                //If the line starts with something unknown an error should be logged to the console
+                System.out.println("Unknown command line in data file "); 
+             
+            }  
+            s.close();
+            fd.dispose();
             //If the size of the timeSteps list is less that 1 
             //print an error to the console saying the file contained 0 time steps
             if(timeSteps.size() < 1)  

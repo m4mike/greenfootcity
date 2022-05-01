@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=WorldBorder
-comment0.text=\r\n\ Displays\ a\ red\ border\ where\ the\ edge\ of\ your\ city\ is\r\n\ \r\n\ @author\ (Name\ Here)\r\n\ @version\ (Date)\r\n
+comment0.text=\r\n\ Displays\ a\ red\ border\ where\ the\ edge\ of\ your\ city\ is\r\n\ \r\n\ @author\ Alex\ Dollar\r\n\ @version\ 1.0-ALPHA\r\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\r\n\ Draw\ the\ border\ and\ move\ to\ the\ correct\ position\r\n

@@ -1,11 +1,13 @@
 #BlueJ class context
 comment0.target=Camera
-comment0.text=\r\n\ The\ camera\ that\ all\ city\ objects\ position\ themselves\ releative\ to\r\n\ This\ class\ is\ also\ incharge\ of\ drawing\ the\ grid\r\n\ \r\n\ @author\ Liam\ Bentein\r\n<<<<<<<\ HEAD\r\n\ @version\ (Date)\r\n\=\=\=\=\=\=\=\r\n>>>>>>>\ 8235762851f3c323cc5a1bf71cb6cae7e35e4dd8\r\n
+comment0.text=\r\n\ The\ camera\ that\ all\ city\ objects\ position\ themselves\ releative\ to\r\n\ This\ class\ is\ also\ incharge\ of\ drawing\ the\ grid\r\n\ \r\n\ @author\ Alex\ Dollar\r\n\ @version\ 1.0-ALPHA\r\n
 comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Camera\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.target=Camera()
 comment2.params=
-comment2.target=GridWorld\ getGridWorld()
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Camera\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment3.params=
-comment3.target=greenfoot.GreenfootImage\ createImage()
-numComments=4
+comment3.target=GridWorld\ getPlannerWorld()
+comment4.params=
+comment4.target=greenfoot.GreenfootImage\ createImage()
+numComments=5
