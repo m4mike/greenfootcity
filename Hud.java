@@ -72,11 +72,15 @@ public class Hud extends Actor
      * Clears the instuctions from the screen once the user has loaded a file
      */
     private void clearInfo() {
+        
+        
         int posY = GridWorld.WORLD_Y / 4;
         GridWorld gw = (GridWorld) this.getWorld();
+        //clear press Run to start
+        gw.showText(null, GridWorld.WORLD_X/2 ,GridWorld.WORLD_Y/4);
          for( int i = 0 ; i< messages.length;i++)
         {
-            gw.showText(null, GridWorld.WORLD_X, posY + ((i+1) * 32 ));
+            gw.showText(null, GridWorld.WORLD_X/2, posY + ((i+1) * 32 ));
         }
         
     }
@@ -87,16 +91,7 @@ public class Hud extends Actor
      * @param data The timestep containing the data to display
      */
     private void drawData(TimeStep data) {
-        /*
-         * The private method drawData should take a TimeStep as a parameter.
-The Time step’s res tiles should be drawn 1/5 the way acrost the screen and 48 pixels down
-The Time steps com tiles should be drawn 2/5 the way acrost the screen and 48 pixels down
-The Time step’s ind tiles should be drawn 3/5 the way acrost the screen and 48 pixels down
-The Time step’s road tiles should be drawn 4/5 the way acrost the screen and 48 pixels down
-The Time step’s area should be drawn halfway acrost the screen and 64 pixels down
-
-         */
-        
+ 
         GridWorld gw = (GridWorld) this.getWorld();
         gw.showText(Integer.toString(data.resTiles), GridWorld.WORLD_X * 1 / 5, 48);
         gw.showText(Integer.toString(data.comTiles), GridWorld.WORLD_X * 2 / 5, 48);

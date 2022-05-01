@@ -6,10 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * This class is also incharge of drawing the grid
  * 
  * @author Liam Bentein
-<<<<<<< HEAD
  * @version (Date)
-=======
->>>>>>> 8235762851f3c323cc5a1bf71cb6cae7e35e4dd8
  */
 public class Camera extends Actor
 {
@@ -29,18 +26,22 @@ public class Camera extends Actor
     {
         if(Greenfoot.isKeyDown("up"))
         {
+            cameraY += -2;
             setLocation(getX(), getY() -2);
         }
          if(Greenfoot.isKeyDown("down"))
         {
+            cameraY += 2;
             setLocation(getX(), getY() +2);
         }
         if(Greenfoot.isKeyDown("left"))
         {
+            cameraX += -2;
             setLocation(getX()-2, getY() );
         }
         if(Greenfoot.isKeyDown("right"))
         {
+            cameraX += 2;
             setLocation(getX() +2, getY() );
         }
         cellSize = getGridWorld().cellSize;
