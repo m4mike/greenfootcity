@@ -53,7 +53,8 @@ public class GridWorld extends World
      */
     public GridWorld()
     {    
-        super(WORLD_X, WORLD_Y, WORLD_CELL_SIZE);
+        //false as last parameter to allow actors to move of screen
+        super(WORLD_X, WORLD_Y, WORLD_CELL_SIZE,false);
         this.cityMap = new HashMap<>();
         camera = new Camera();            this.addObject(camera, 0, 0);
         worldBorder  = new WorldBorder(); this.addObject(worldBorder, 0,0);
