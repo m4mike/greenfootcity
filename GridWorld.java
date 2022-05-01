@@ -87,27 +87,30 @@ public class GridWorld extends World
             secondsPassed++;
 
         }
-        TimeStep current = timeSteps.get( currentTimeStepIndex ) ;  
-        //If the value of currentTimeStepStartTime plus the value of the property time of the current var is less than or equal to seconds passed then:
-        if ( currentTimeStepStartTime + current.time <= secondsPassed )
+        if (loaded)
         {
-            // If the time step is not the last time step then 
-            if( current != timeSteps.get(timeSteps.size()-1) )
-            { // waar halen we de last timestep ? uit de lijst van timesteps? 
-                //Set the value of current to the TimeStep at the index currentTimeStepIndex+1 and then 
-                current = timeSteps.get(currentTimeStepIndex + 1);
-                //call the applyTimeStepMethod with the arguments current, and currentTimeStepIndex + 1
-                applyTimeStep(current,currentTimeStepIndex + 1);
-            }
-            else //Otherwise set the instance var ended to true and call the score method
+            TimeStep current = timeSteps.get( currentTimeStepIndex ) ;  
+              //If the value of currentTimeStepStartTime plus the value of the property time of the current var is less than or equal to seconds passed then:
+            if ( currentTimeStepStartTime + current.time <= secondsPassed )
             {
-                
-                this.ended = true;
-                this.score();   
+                // If the time step is not the last time step then 
+                if( current != timeSteps.get(timeSteps.size()-1) )
+                { // waar halen we de last timestep ? uit de lijst van timesteps? 
+                    //Set the value of current to the TimeStep at the index currentTimeStepIndex+1 and then 
+                    current = timeSteps.get(currentTimeStepIndex + 1);
+                    //call the applyTimeStepMethod with the arguments current, and currentTimeStepIndex + 1
+                    applyTimeStep(current,currentTimeStepIndex + 1);
+                }
+                else //Otherwise set the instance var ended to true and call the score method
+                {
+                    
+                    this.ended = true;
+                    this.score();   
+                }
             }
         }
-
-            
+        
+                
             
         //The next part handles loading. If the game is not loaded, has not ended, and the L key is pressed:
         if(! loaded && !ended && Greenfoot.isKeyDown("L")){  
@@ -131,32 +134,32 @@ public class GridWorld extends World
                     //If the line starts with “road” 
                     //the next two integers are the position you should call the addTile method with 
                     //“ROAD” and the two integers you collected
-                    if( words[0]=="road"){
+                    if( words[0].equals("road")){
                         addTile("ROAD",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
                         continue;
                     }
                     //If the line starts with “res” the next two integers are the position 
                     //  you should call the addTile method with “RES” and the two integers you collected
-                    if( words[0]=="res"){
+                    if( words[0].equals("res")){
                         addTile("RES",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
                         continue;
                     }
                     //If the line starts with “com” the next two integers are the position 
                     //  you should call the addTile method with “COM” and the two integers you collected
-                    if( words[0]=="com"){
+                    if( words[0].equals("com")){
                         addTile("COM",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
                         continue;
                     }
                     //If the line starts with “ind” the next two integers are the position 
                     //  you should call the addTile method with “IND” and the two integers you collected
-                    if( words[0]=="ind"){
+                    if( words[0].equals("ind")){
                         addTile("IND",Integer.parseInt(words[1]),Integer.parseInt(words[2]));
                         continue;
                     }
                     //If the line starts with “time_step” the next 7 integers will be the arguments 
                     //  to pass to the TimeStep constructor. Create a TimeStep using the 7 collected integers 
                     //  then add the new timestep to the timeSteps list using timeSteps.add()
-                    if( words[0]=="time_step"){
+                    if( words[0].equals("time_step")){
                         TimeStep ts =  new TimeStep(Integer.parseInt(words[1]),
                         Integer.parseInt(words[2]), Integer.parseInt(words[3]), Integer.parseInt(words[4]),
                         Integer.parseInt(words[5]), Integer.parseInt(words[6]), Integer.parseInt(words[7]));

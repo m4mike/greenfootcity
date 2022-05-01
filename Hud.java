@@ -57,25 +57,12 @@ public class Hud extends Actor
      * Used to draw instructions to the screen before the user has loaded a level
      */
     private void drawInfo() {
-        /*
-         * The private method drawInfo should draw info to the screen
-The text should start at the same position as the method shown in the constructor with each next message being 32 pixels below the last
-The messages are:
-“Welcome to City Planner!”
-“Use the arrow keys to move the camera.”
-“Hover over a grid cell then use the keys 1-4 to place a city object.”
-1- Res(idential)
-2- Com(mercial)
-3- Ind(ustrial) 
-4- Road
-“Use the L key to load a data file to start the game.”
-
-         */
+      
         int posY = GridWorld.WORLD_Y / 4;
         GridWorld gw = (GridWorld) this.getWorld();
          for( int i = 0 ; i< messages.length;i++)
         {
-            gw.showText(messages[i], GridWorld.WORLD_X, posY + ((i+1) * 32 ));
+            gw.showText(messages[i], GridWorld.WORLD_X/2, posY + ((i+1) * 32 ));
         }
 
         
