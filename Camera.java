@@ -50,7 +50,8 @@ public class Camera extends Actor
         if(cellSizeHash  != cellSize){
             cellSizeHash = cellSize;
             image = createImage();
-
+            //getGridWorld().getBackground().drawImage(image, 0, 0);
+            setImage(image);
         }
         setLocation(-offsetX + GridWorld.WORLD_X / 2, -offsetY + GridWorld.WORLD_Y / 2);
         
@@ -69,6 +70,7 @@ public class Camera extends Actor
         img.setColor( Color.GRAY);
         for(int x = 0;  x <= img.getWidth(); x += cellSize)
             img.drawLine(x, 0, x, img.getHeight());
+  
    
         for(int y = 0; y <= img.getHeight() ; y += cellSize)
             img.drawLine(0, y ,img.getWidth(), y);

@@ -296,16 +296,16 @@ public class GridWorld extends World
          */
         switch(type) {
             case "RES":
-                addTile(type, x, y);
+                if(resTiles-- > 0) addTile(type, x, y);
                 break;
             case "COM":
-                addTile(type, x, y);
+                if(comTiles-- > 0) addTile(type, x, y);
                 break;
             case "IND":
-                addTile(type, x, y);
+                if(indTiles-- > 0) addTile(type, x, y);
                 break;
             case "ROAD":
-                addTile(type, x, y);
+                if(roadTiles-- > 0) addTile(type, x, y);
                 break;
         }
     }
@@ -324,14 +324,17 @@ public class GridWorld extends World
             case "RES":
                 cityMap.put(getKey(x,y), type);
                 this.addObject(new Residential(x, y), 0, 0);
+               
                 break;
             case "COM":
                 cityMap.put(getKey(x,y), type);
                 this.addObject(new Commercial(x, y), 0, 0);
+                
                 break;
             case "IND":
                 cityMap.put(getKey(x,y), type);
                 this.addObject(new Industrial(x, y), 0, 0);
+              
                 break;
             case "ROAD":
                 cityMap.put(getKey(x,y), type);
