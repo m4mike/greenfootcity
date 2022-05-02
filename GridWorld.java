@@ -296,16 +296,32 @@ public class GridWorld extends World
          */
         switch(type) {
             case "RES":
-                if(resTiles-- > 0) addTile(type, x, y);
+                if(resTiles> 0)
+                {
+                    resTiles--;
+                    addTile(type, x, y);
+            }
                 break;
             case "COM":
-                if(comTiles-- > 0) addTile(type, x, y);
+                if(comTiles> 0)
+                {
+                    comTiles--;
+                    addTile(type, x, y);
+                }
                 break;
             case "IND":
-                if(indTiles-- > 0) addTile(type, x, y);
+                if(indTiles > 0)
+                {
+                    indTiles--; 
+                    addTile(type, x, y);
+                }
                 break;
             case "ROAD":
-                if(roadTiles-- > 0) addTile(type, x, y);
+                if(roadTiles> 0)
+                {
+                  roadTiles--; 
+                  addTile(type, x, y);  
+                }
                 break;
         }
     }
